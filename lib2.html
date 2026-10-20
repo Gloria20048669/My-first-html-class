@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Library & Book Ordering</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #eef2f5;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #243b55, #3d5a80);
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        header h1 {
+            font-size: 38px;
+            margin: 10px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        header img {
+            width: 300px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.4s;
+        }
+
+        header img:hover {
+            transform: scale(1.05);
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            background-color: #ffd166;
+            color: #243b55;
+            margin: 5px;
+            padding: 9px 14px;
+            display: inline-block;
+            border-radius: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: white;
+            transform: scale(1.05);
+        }
+
+        section {
+            background-color: white;
+            margin: 25px auto;
+            padding: 25px;
+            width: 90%;
+            max-width: 1050px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #243b55;
+            border-left: 5px solid #ffd166;
+            padding-left: 10px;
+        }
+
+        h3 {
+            color: #3d5a80;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background-color: #243b55;
+            color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        tbody tr {
+            background-color: #f5f7f9;
+        }
+
+        tbody tr:hover {
+            background-color: #fff3cd;
+        }
+
+        form {
+            background-color: #f5f7f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        label {
+            color: #243b55;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        input:not([type="radio"]):not([type="submit"]):not([type="reset"]),
+        select,
+        textarea {
+            padding: 10px;
+            margin-top: 5px;
+            width: 90%;
+            border: 2px solid #243b55;
+            border-radius: 6px;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        select[multiple] {
+            height: 130px;
+            width: 100%;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid #ffd166;
+            outline-offset: 2px;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin: 10px 5px;
+        }
+
+        input[type="submit"],
+        input[type="reset"],
+        button {
+            width: auto;
+            padding: 11px 20px;
+            background-color: #243b55;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 8px 5px 8px 0;
+            transition: 0.3s;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #198754;
+            transform: scale(1.03);
+        }
+
+        input[type="reset"]:hover {
+            background-color: #dc3545;
+        }
+
+        #orders-message {
+            font-weight: bold;
+            color: #243b55;
+        }
+
+        footer {
+            background-color: #141e30;
+            color: #ffd166;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 8px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 28px;
+            }
+
+            header img {
+                max-width: 90%;
+                height: auto;
+            }
+
+            section {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>📚 Mary Muvea Student Library</h1>
+        <p>Welcome to our Student Library & Book Ordering Website</p>
+
+        <img src="images.jfif" alt="Student Library">
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#books">Available Books</a>
+            <a href="#categories">Categories</a>
+            <a href="#order">Order Books</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <section id="home">
+        <h2>Welcome to Our Library</h2>
+
+        <p>Our Student Library provides affordable academic books for university and college students.</p>
+
+        <p>You can browse our available books and place an order using the order form below.</p>
+
+        <h3>Why Choose Our Library?</h3>
+
+        <ul>
+            <li>Affordable books</li>
+            <li>Books for different courses</li>
+            <li>Easy ordering process</li>
+            <li>Quality academic materials</li>
+            <li>Convenient book collection</li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <section id="books">
+        <h2>Available Books</h2>
+        <p>Below are some of the books available in our library.</p>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Computer Networks</td>
+                        <td>Andrew S. Tanenbaum</td>
+                        <td>Networking</td>
+                        <td>KSh 800</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Software Engineering</td>
+                        <td>Ian Sommerville</td>
+                        <td>Software Engineering</td>
+                        <td>KSh 1,000</td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Operating System Concepts</td>
+                        <td>Silberschatz</td>
+                        <td>Operating Systems</td>
+                        <td>KSh 900</td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>Data Structures and Algorithms</td>
+                        <td>Robert Lafore</td>
+                        <td>Programming</td>
+                        <td>KSh 850</td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td>Calculus 1</td>
+                        <td>James Stewart</td>
+                        <td>Mathematics</td>
+                        <td>KSh 750</td>
+                    </tr>
+
+                    <tr>
+                        <td>6</td>
+                        <td>Probability and Statistics</td>
+                        <td>Walpole</td>
+                        <td>Statistics</td>
+                        <td>KSh 700</td>
+                    </tr>
+
+                    <tr>
+                        <td>7</td>
+                        <td>Statistical Programming</td>
+                        <td>Eric Matthes</td>
+                        <td>Programming</td>
+                        <td>KSh 950</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="categories">
+        <h2>Book Categories</h2>
+
+        <ol>
+            <li>Computer Science</li>
+            <li>Information Technology</li>
+            <li>Programming</li>
+            <li>Networking</li>
+            <li>Software Engineering</li>
+            <li>Mathematics</li>
+            <li>Statistics</li>
+            <li>Business</li>
+        </ol>
+    </section>
+
+    <hr>
+
+    <section id="order">
+        <h2>📖 Order Your Book</h2>
+        <p>Fill in the form below to order a book.</p>
+
+        <form id="order-form">
+
+            <label for="name">Student Name:</label><br>
+            <input type="text" id="name" name="name"
+                   placeholder="Enter your name" required>
+            <br><br>
+
+            <label for="registration">Registration Number:</label><br>
+            <input type="text" id="registration" name="registration"
+                   placeholder="Enter registration number" required>
+            <br><br>
+
+            <label for="course">Course:</label><br>
+            <select id="course" name="course" multiple required>
+                <option value="BIT">BIT - Business Information Technology</option>
+                <option value="BBIT">BBIT</option>
+                <option value="BCS">BCS - Computer Science</option>
+                <option value="DIT">DIT - Diploma IT</option>
+                <option value="CIT">CIT</option>
+                <option value="ICT">ICT</option>
+                <option value="CS">Computer Science</option>
+            </select>
+
+            <small>Hold CTRL to select multiple courses on a computer.</small>
+            <br><br>
+
+            <label for="email">Email Address:</label><br>
+            <input type="email" id="email" name="email"
+                   placeholder="Enter email address">
+            <br><br>
+
+            <label for="phone">Phone Number:</label><br>
+            <input type="tel" id="phone" name="phone"
+                   placeholder="Enter phone number" required>
+            <br><br>
+
+            <label for="book">Select Book:</label><br>
+            <select id="book" name="book" required>
+                <option value="Computer Networks">Computer Networks</option>
+                <option value="Software Engineering">Software Engineering</option>
+                <option value="Operating System Concepts">Operating System Concepts</option>
+                <option value="Data Structures and Algorithms">Data Structures and Algorithms</option>
+                <option value="Calculus 1">Calculus 1</option>
+                <option value="Probability and Statistics">Probability and Statistics</option>
+                <option value="Statistical Programming">Statistical Programming</option>
+            </select>
+            <br><br>
+
+            <label for="quantity">Quantity:</label><br>
+            <input type="number" id="quantity" name="quantity"
+                   min="1" value="1" required>
+            <br><br>
+
+            <label>Payment Method:</label><br>
+            <input type="radio" id="mpesa" name="payment"
+                   value="M-Pesa" required>
+            <label for="mpesa">M-Pesa</label><br>
+
+            <input type="radio" id="cash" name="payment"
+                   value="Cash" required>
+            <label for="cash">Cash</label>
+            <br><br>
+
+            <label for="location">Collection Location:</label><br>
+            <input type="text" id="location" name="location"
+                   placeholder="Add your location details">
+            <br><br>
+
+            <label for="message">Additional Message:</label><br>
+            <textarea id="message" name="message"
+                      rows="5" placeholder="Write any additional information"></textarea>
+            <br><br>
+
+            <input type="submit" value="Place Order">
+            <input type="reset" value="Clear Form">
+        </form>
+    </section>
+
+    <hr>
+
+    <section id="about">
+        <h2>About Our Library</h2>
+
+        <p>Student Library is an academic book service designed to help students access learning materials easily and affordably.</p>
+
+        <p>We provide books covering different academic fields, including Information Technology, Computer Science, Mathematics, Statistics and Business.</p>
+    </section>
+
+    <hr>
+
+    <section id="rules">
+        <h2>Library Rules</h2>
+
+        <ul>
+            <li>Handle all books carefully.</li>
+            <li>Do not write or draw inside library books.</li>
+            <li>Return borrowed books on time.</li>
+            <li>Keep books clean and safe.</li>
+            <li>Report damaged books to the librarian.</li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+
+        <p><b>Library Name:</b> Mary Muvea Library</p>
+        <p><b>Phone:</b> +254736363721</p>
+        <p><b>Email:</b> studentlibrary@Meru.com</p>
+        <p><b>Location:</b> Meru, Kenya</p>
+        <p><b>Opening Hours:</b> Monday - Friday, 8:00 AM - 5:00 PM</p>
+    </section>
+
+    <section id="saved-orders-section">
+        <h2>Saved Book Orders</h2>
+        <p id="orders-message">Loading orders...</p>
+
+        <div class="table-container">
+            <table id="orders-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Student Name</th>
+                        <th>Registration</th>
+                        <th>Course(s)</th>
+                        <th>Book</th>
+                        <th>Quantity</th>
+                        <th>Payment</th>
+                        <th>Phone</th>
+                        <th>Collection Location</th>
+                    </tr>
+                </thead>
+                <tbody id="saved-orders"></tbody>
+            </table>
+        </div>
+
+        <button type="button" id="clear-orders">Clear All Saved Orders</button>
+    </section>
+
+    <footer>
+        <p>© 2026 Student Library & Book Ordering System</p>
+        <p>Designed by Apex Creative Agency.</p>
+    </footer>
+
+    <script>
+        // Select the form and the elements used to display saved orders.
+        const orderForm = document.getElementById("order-form");
+        const savedOrdersBody = document.getElementById("saved-orders");
+        const ordersMessage = document.getElementById("orders-message");
+        const clearOrdersButton = document.getElementById("clear-orders");
+
+        // This is the name used to store orders in the browser.
+        const storageKey = "maryMuveaLibraryOrders";
+
+        // Read orders that were saved previously.
+        function getSavedOrders() {
+            try {
+                const orders = JSON.parse(
+                    localStorage.getItem(storageKey) || "[]"
+                );
+
+                return Array.isArray(orders) ? orders : [];
+            } catch (error) {
+                console.error("Could not read saved orders:", error);
+                return [];
+            }
+        }
+
+        // Save the orders to browser storage.
+        function saveOrders(orders) {
+            localStorage.setItem(storageKey, JSON.stringify(orders));
+        }
+
+        // Add one table cell safely.
+        function addCell(row, value) {
+            const cell = document.createElement("td");
+            cell.textContent = value || "—";
+            row.appendChild(cell);
+        }
+
+        // Display all saved orders in the table.
+        function displayOrders() {
+            const orders = getSavedOrders();
+
+            savedOrdersBody.replaceChildren();
+
+            if (orders.length === 0) {
+                ordersMessage.textContent =
+                    "No orders saved yet. Place an order using the form above.";
+                return;
+            }
+
+            ordersMessage.textContent =
+                "Total saved orders: " + orders.length;
+
+            orders.forEach(function(order) {
+                const row = document.createElement("tr");
+
+                addCell(row, order.date);
+                addCell(row, order.studentName);
+                addCell(row, order.registration);
+                addCell(row, (order.courses || []).join(", "));
+                addCell(row, order.book);
+                addCell(row, String(order.quantity));
+                addCell(row, order.payment);
+                addCell(row, order.phone);
+                addCell(row, order.location);
+
+                savedOrdersBody.appendChild(row);
+            });
+        }
+
+        // Run this code when a student submits the form.
+        orderForm.addEventListener("submit", function(event) {
+            // Prevent the page from refreshing immediately.
+            event.preventDefault();
+
+            // Get all the courses selected by the student.
+            const selectedCourses = Array.from(
+                document.getElementById("course").selectedOptions,
+                function(option) {
+                    return option.value;
+                }
+            );
+
+            // Find the payment method selected.
+            const selectedPayment = orderForm.querySelector(
+                'input[name="payment"]:checked'
+            );
+
+            if (selectedCourses.length === 0) {
+                alert("Please select at least one course.");
+                return;
+            }
+
+            if (!selectedPayment) {
+                alert("Please choose a payment method.");
+                return;
+            }
+
+            // Collect the information entered into the form.
+            const order = {
+                date: new Date().toLocaleString(),
+                studentName: document.getElementById("name").value.trim(),
+                registration: document.getElementById("registration").value.trim(),
+                courses: selectedCourses,
+                email: document.getElementById("email").value.trim(),
+                phone: document.getElementById("phone").value.trim(),
+                book: document.getElementById("book").value,
+                quantity: Number(document.getElementById("quantity").value),
+                payment: selectedPayment.value,
+                location: document.getElementById("location").value.trim(),
+                message: document.getElementById("message").value.trim()
+            };
+
+            try {
+                // Get the old orders first.
+                const orders = getSavedOrders();
+
+                // Add the new order.
+                orders.push(order);
+
+                // Save the updated list.
+                saveOrders(orders);
+
+                // Refresh the saved orders table.
+                displayOrders();
+
+                alert("Order saved successfully on this browser!");
+
+                // Clear the form for the next student.
+                orderForm.reset();
+                document.getElementById("quantity").value = 1;
+
+            } catch (error) {
+                console.error("Could not save the order:", error);
+
+                alert(
+                    "The order could not be saved. Please check your browser settings."
+                );
+            }
+        });
+
+        // Delete all saved orders when the button is clicked.
+        clearOrdersButton.addEventListener("click", function() {
+            const confirmed = confirm(
+                "Are you sure you want to delete all saved orders from this browser?"
+            );
+
+            if (!confirmed) {
+                return;
+            }
+
+            localStorage.removeItem(storageKey);
+            displayOrders();
+        });
+
+        // Show orders already saved when the page opens.
+        displayOrders();
+    </script>
+
+</body>
+</html>

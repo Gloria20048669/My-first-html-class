@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jenga SACCO</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #222;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 7%;
+            background-color: white;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #c1121f;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #222;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #c1121f;
+        }
+
+        .login {
+            background-color: #c1121f;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 25px;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 70px 7%;
+            background-color: #fff5f5;
+        }
+
+        .hero-text {
+            width: 50%;
+        }
+
+        .hero-text h1 {
+            font-size: 55px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            color: #c1121f;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #c1121f;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #8d0b15;
+            transform: scale(1.05);
+        }
+
+        .hero-image {
+            width: 45%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 25px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 35px 7%;
+            background-color: #c1121f;
+            color: white;
+            text-align: center;
+        }
+
+        .stats h2 {
+            font-size: 30px;
+        }
+
+        .stats p {
+            margin-top: 5px;
+        }
+
+        section {
+            padding: 70px 7%;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title h2 {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #666;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .card {
+            width: 30%;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px #ddd;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: #c1121f;
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background-color: #fff5f5;
+        }
+
+        .about img {
+            width: 45%;
+            border-radius: 20px;
+        }
+
+        .about-text {
+            width: 50%;
+        }
+
+        .about-text h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .form-section {
+            background-color: #c1121f;
+            color: white;
+            text-align: center;
+        }
+
+        form {
+            background-color: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 15px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border: 2px solid #c1121f;
+        }
+
+        form button {
+            width: 100%;
+            padding: 14px;
+            background-color: #c1121f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #8d0b15;
+        }
+
+        footer {
+            background-color: #1b1b1b;
+            color: white;
+            padding: 40px 7%;
+            text-align: center;
+        }
+
+        footer h2 {
+            color: #c1121f;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            margin: 8px;
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav a {
+                margin: 5px;
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-text,
+            .hero-image {
+                width: 100%;
+            }
+
+            .hero-text {
+                margin-bottom: 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 40px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .cards {
+                flex-direction: column;
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .about {
+                flex-direction: column;
+            }
+
+            .about img,
+            .about-text {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        JENGA SACCO
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#loans">Loans</a>
+        <a href="#contact">Contact</a>
+        <a href="#membership" class="login">Join Us</a>
+    </nav>
+
+</header>
+
+
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <h1>
+            Build Your <span>Financial Future</span>
+        </h1>
+
+        <p>
+            Save smarter, access affordable loans and
+            grow together with Jenga SACCO.
+        </p>
+
+        <a href="#membership" class="button">
+            Become a Member
+        </a>
+
+    </div>
+
+
+    <div class="hero-image">
+
+        <img
+        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
+        alt="People working together">
+
+    </div>
+
+</section>
+
+
+<div class="stats">
+
+    <div>
+        <h2>10K+</h2>
+        <p>Members</p>
+    </div>
+
+    <div>
+        <h2>5M+</h2>
+        <p>Savings</p>
+    </div>
+
+    <div>
+        <h2>2K+</h2>
+        <p>Loans Issued</p>
+    </div>
+
+    <div>
+        <h2>10+</h2>
+        <p>Years of Trust</p>
+    </div>
+
+</div>
+
+
+<section id="services">
+
+    <div class="title">
+
+        <h2>Our Financial Services</h2>
+
+        <p>
+            Simple financial solutions designed for your growth.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <div class="icon">💰</div>
+
+            <h3>Savings</h3>
+
+            <p>
+                Save regularly and build a strong
+                financial foundation for your future.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">💳</div>
+
+            <h3>Loans</h3>
+
+            <p>
+                Access affordable loans to support
+                your personal and business goals.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📈</div>
+
+            <h3>Investment</h3>
+
+            <p>
+                Grow your money through smart
+                investment opportunities.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<section class="about" id="about">
+
+    <img
+    src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80"
+    alt="SACCO members">
+
+    <div class="about-text">
+
+        <h2>We Grow Together</h2>
+
+        <p>
+            Jenga SACCO is built around one simple idea:
+            when members work together, everyone has an
+            opportunity to grow.
+        </p>
+
+        <br>
+
+        <p>
+            We provide reliable savings solutions,
+            affordable loans and financial opportunities
+            that help our members achieve their dreams.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section id="loans">
+
+    <div class="title">
+
+        <h2>Loan Solutions</h2>
+
+        <p>
+            Choose a loan that fits your needs.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <div class="icon">🏢</div>
+
+            <h3>Business Loan</h3>
+
+            <p>
+                Get financial support to start or
+                expand your business.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🎓</div>
+
+            <h3>Education Loan</h3>
+
+            <p>
+                Invest in education and build a
+                brighter future.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🚨</div>
+
+            <h3>Emergency Loan</h3>
+
+            <p>
+                Get financial assistance when
+                unexpected situations arise.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<section class="form-section" id="membership">
+
+    <h2>Become a Jenga SACCO Member</h2>
+
+    <br>
+
+    <form>
+
+        <input
+        type="text"
+        placeholder="Full Name">
+
+        <input
+        type="tel"
+        placeholder="Phone Number">
+
+        <input
+        type="email"
+        placeholder="Email Address">
+
+        <input
+        type="text"
+        placeholder="ID Number">
+
+        <select>
+
+            <option>Select Membership Type</option>
+            <option>Individual</option>
+            <option>Student</option>
+            <option>Business</option>
+
+        </select>
+
+        <textarea
+        rows="4"
+        placeholder="Why would you like to join?"></textarea>
+
+        <button type="submit">
+            JOIN JENGA SACCO
+        </button>
+
+    </form>
+
+</section>
+
+
+<section id="contact">
+
+    <div class="title">
+
+        <h2>Get In Touch</h2>
+
+        <p>
+            We are ready to help you start your financial journey.
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">📞</div>
+
+            <h3>Call Us</h3>
+
+            <p>0712 345 678</p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📧</div>
+
+            <h3>Email Us</h3>
+
+            <p>info@jengasacco.com</p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📍</div>
+
+            <h3>Visit Us</h3>
+
+            <p>Meru, Kenya</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <h2>JENGA SACCO</h2>
+
+    <p>Build Today. Prosper Tomorrow.</p>
+
+    <p>© 2026 Jenga SACCO. All Rights Reserved.</p>
+
+</footer>
+
+<audio controls>
+  <source src="audio/my-audio.mp4" type="audio/mp4">
+  Your browser does not support the audio element.
+</audio>
+</body>
+
+</html>
